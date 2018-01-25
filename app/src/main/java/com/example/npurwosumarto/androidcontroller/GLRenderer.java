@@ -105,8 +105,8 @@ public class GLRenderer implements GLSurfaceView.Renderer {
         targetPos1.setVertices(target_windowx-width, target_windowy-width,0,target_windowx-width,target_windowy+width, 0, target_windowx+width, target_windowy+width,0);
         targetPos2.setVertices(target_windowx+width, target_windowy+width, 0, target_windowx+width, target_windowy-width, 0, target_windowx-width,target_windowy-width,0);
 
-        float targetx_scaled = ((x_raw - (window_width/2)) / (window_width/2));
-        float targety_scaled = ((y_raw - (window_height/2)) / (window_width/2));
+        float targetx_scaled = ((x_raw - (window_width/2)) / (window_width/2)) * 5;
+        float targety_scaled = ((y_raw - (window_height/2)) / (window_width/2)) * 5;
 
         out.println(targetx_scaled);
         out.println(targety_scaled);
@@ -162,8 +162,8 @@ public class GLRenderer implements GLSurfaceView.Renderer {
                 if(lastX != -1 && lastZ != -1 && targetSet){
                     float xStep = currentX - lastX;
                     float zStep = currentZ - lastZ;
-                    target_windowx -= xStep;
-                    target_windowy += zStep;
+                    target_windowx -= xStep/5;
+                    target_windowy += zStep/5;
                     float width = 0.05f;
                     targetPos1.setVertices(target_windowx-width, target_windowy-width,0,target_windowx-width,target_windowy+width, 0, target_windowx+width, target_windowy+width,0);
                     targetPos2.setVertices(target_windowx+width, target_windowy+width, 0, target_windowx+width, target_windowy-width, 0, target_windowx-width,target_windowy-width,0);

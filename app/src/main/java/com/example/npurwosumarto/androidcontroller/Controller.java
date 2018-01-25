@@ -26,7 +26,7 @@ public class Controller extends AppCompatActivity {
 
     ServerSocket serverSocket;
     Socket clientSocket;
-    public static final String TABLET_IP = "172.30.71.2";
+    public static final String TABLET_IP = "172.30.72.147";
     private static final int PORT1 = 1300;
     private static final int PORT2 = 1301;
     PrintWriter out;

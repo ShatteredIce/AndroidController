@@ -15,8 +15,30 @@ public class WaypointMap {
     }
 
     public void createWaypoints(){
-        Waypoint start = new Waypoint(0,0, waypoints.size());
+        Waypoint start = new Waypoint(0, 0, 0);
         waypoints.add(start);
+        Waypoint a = new Waypoint(5, 0, 1);
+        waypoints.add(a);
+        Waypoint b = new Waypoint(5, 5, 2);
+        waypoints.add(b);
+        Waypoint c = new Waypoint(8, 5, 3);
+        waypoints.add(c);
+        Waypoint d = new Waypoint(8, 8, 4);
+        waypoints.add(d);
+        start.setConnection(1, 5);
+        start.setConnection(2, 25);
+        a.setConnection(0, 5);
+        a.setConnection(2, 5);
+        a.setConnection(4, 7);
+        b.setConnection(0, 25);
+        b.setConnection(1, 5);
+        b.setConnection(3, 3);
+        b.setConnection(4, 5);
+        c.setConnection(2, 3);
+        c.setConnection(4, 3);
+        d.setConnection(1, 7);
+        d.setConnection(2, 5);
+        d.setConnection(3, 3);
     }
 
     public ArrayList<Waypoint> findPath(int start_id, int end_id){
@@ -59,8 +81,13 @@ public class WaypointMap {
                     }
                 }
             }
-            //if unvisited node is still null, there is no path
+            //if unvisited node is still null, form the path
             if(currentNode == null){
+                currentNode = waypoints.get(end_id);
+                while(currentNode.getId() != start_id){
+                    path.add(currentNode);
+                    currentNode = waypoints.get(previousNode.get(currentNode.getId()));
+                }
                 return path;
             }
         }
